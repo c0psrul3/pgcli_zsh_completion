@@ -1,0 +1,33 @@
+#compdef pgcli
+
+_pgcli() {
+    local curcontext="$curcontext" state line
+
+    typeset -A opt_args
+    typeset -a args
+    if (which pgcli &>/dev/null) ; then
+        ## collect list of DSNs
+        args=($(pgcli --list-dsn | awk -F' : ' '{print $1}'))
+    else
+        echo "Command Not Found, \"pgcli\"" &>/dev/stderr
+    fi
+
+    _arguments \
+        '1: :->options' \
+        '2: :->dsnlist'
+        #'*: :->authorizedkeys' \
+        #'*: :->knownhosts'
+
+    case $state in
+        options)
+            _arguments '1:options:(`echo "-D"`)'
+        ;;
+        dsnlist)
+            _arguments '2:dsnlist:(`echo ${(v)args[*]}`)'
+        ;;
+    esac
+}
+
+_pgcli "$@"
+
+# vim:  set ft=sh.zsh ts=4 sts=4 sw=4 et nofen :
