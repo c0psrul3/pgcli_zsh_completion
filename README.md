@@ -5,7 +5,11 @@ completion script for pgcli
 + or put ./completions/_pgcli in one of your fpaths.
 
 ### Example fpath locations:
-    - "/home/zmnichols/.local/zsh-plugins/zsh-completions"
-    - "/usr/local/share/zsh/site-functions"
-    - "/usr/share/zsh/site-functions"
+- "/home/zmnichols/.local/zsh-plugins/zsh-completions"
+- "/usr/local/share/zsh/site-functions"
+- "/usr/share/zsh/site-functions"
+
+
+#### TODO:
++ make compatible with zplug (zsh plugin)
 
